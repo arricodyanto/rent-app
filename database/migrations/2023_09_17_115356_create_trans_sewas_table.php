@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_titip');
             $table->foreign('id_titip')->references('id_titip')->on('trans_titips')->onDelete('cascade');
             $table->date('tgl_awal');
-            $table->date('tgl_akhir');
+            $table->date('tgl_akhir')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('id_kendaraan')->references('id_kendaraan')->on('m_kendaraans')->onDelete('cascade');
             $table->date('tgl_titip');
             $table->integer('harga_sewa')->unsigned();
-            $table->date('tgl_berakhir');
+            $table->date('tgl_berakhir')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
