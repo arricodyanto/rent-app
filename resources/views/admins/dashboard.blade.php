@@ -23,7 +23,7 @@
       <section class="content">
         <div class="container-fluid">
           <div class="d-flex justify-content-center">
-            <h3>Hello, World ini admin</h3>
+            <h3>Welcome to Admin Dashboard, {{Auth::user()->name}}!</h3>
           </div>
         </div><!-- /.container-fluid -->
       </section>
