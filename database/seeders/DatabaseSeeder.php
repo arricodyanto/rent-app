@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this -> call([
-            AdminTableSeeder::class,
+            UserTableSeeder::class,
             KendaraanTableSeeder::class,
             PenitipanTableSeeder::class,
             PenyewaanTableSeeder::class
