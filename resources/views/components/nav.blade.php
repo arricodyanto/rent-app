@@ -30,33 +30,36 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="{{route('admin.kendaraan.lihat')}}" class="nav-link">
-                {{-- active class --}}
-                <i class="nav-icon fas fa-car-alt"></i>
-                <p>
-                Kendaraan
-                </p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                {{-- active class --}}
-                <i class="nav-icon fas fa-monument"></i>
-                <p>
-                Penitipan
-                </p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                {{-- active class --}}
-                <i class="nav-icon fas fa-key"></i>
-                <p>
-                Penyewaan
-                </p>
-            </a>
-        </li>
+        @if (Auth::user()->is_admin) 
+            <li class="nav-item">
+                <a href="{{route('admin.kendaraan.lihat')}}" class="nav-link">
+                    {{-- active class --}}
+                    <i class="nav-icon fas fa-car-alt"></i>
+                    <p>
+                    Kendaraan
+                    </p>
+                </a>
+            </li>
+        @else
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    {{-- active class --}}
+                    <i class="nav-icon fas fa-monument"></i>
+                    <p>
+                    Penitipan
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    {{-- active class --}}
+                    <i class="nav-icon fas fa-key"></i>
+                    <p>
+                    Penyewaan
+                    </p>
+                </a>
+            </li>
+        @endif
         <li class="nav-item">
             <a class="nav-link">
                 {{-- active class --}}
