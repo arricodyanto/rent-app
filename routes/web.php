@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\KendaraanController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,15 +19,17 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Auth::routes();
+Route::get('kendaraan', [KendaraanController::class, 'index'])->name('kendaraan.lihat');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
 
-Route::middleware('auth')->group(function () {
-    Route::view('about', 'about')->name('about');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+// Route::middleware('auth')->group(function () {
+//     Route::view('about', 'about')->name('about');
 
-    Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
-    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-});
+//     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+
+//     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+//     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+// });
