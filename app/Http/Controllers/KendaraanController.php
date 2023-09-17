@@ -22,7 +22,7 @@ class KendaraanController extends Controller
     public function new(Request $request){
         m_kendaraan::create($request->all());
 
-        return redirect(route('kendaraan.lihat'));
+        return redirect(route('admin.kendaraan.lihat'));
     }
 
     public function edit(m_kendaraan $m_kendaraan){
@@ -38,12 +38,12 @@ class KendaraanController extends Controller
         $m_kendaraan->nopol = $request->nopol;
         $m_kendaraan->save();
 
-        return redirect(route('kendaraan.lihat'));
+        return redirect(route('admin.kendaraan.lihat'));
     }
 
     public function delete(m_kendaraan $m_kendaraan) {
         $m_kendaraan->delete();
 
-        return redirect(route('kendaraan.lihat'));
+        return redirect(route('admin.kendaraan.lihat'));
     }
 }

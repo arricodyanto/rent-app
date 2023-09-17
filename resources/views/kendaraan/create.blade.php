@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('kendaraan.lihat')}}">Data Kendaraan</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.kendaraan.lihat')}}">Data Kendaraan</a></li>
                         <li class="breadcrumb-item active">Tambah Kendaraan</li>
                     </ol>
                 </div><!-- /.col -->
@@ -19,7 +19,7 @@
     </div>
 
     <div class="container mt-4">
-        <form action="{{route('kendaraan.new')}}" method="post">
+        <form action="{{route('admin.kendaraan.new')}}" method="post">
             @csrf
             <div class="card-body">
               <div class="form-group">

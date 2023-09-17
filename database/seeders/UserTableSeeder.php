@@ -15,14 +15,14 @@ class UserTableSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'admin',
+                'name' => 'Admin Full Name',
                 'email' => 'admin@rentcar.com',
                 'email_verified_at' => date('Y-m-d H:i:s', time()),
                 'password' => \bcrypt('password'),
                 'is_admin' => true
             ],
             [
-                'name' => 'user',
+                'name' => 'User Full Name',
                 'email' => 'user@rentcar.com',
                 'email_verified_at' => date('Y-m-d H:i:s', time()),
                 'password' => \bcrypt('password'),

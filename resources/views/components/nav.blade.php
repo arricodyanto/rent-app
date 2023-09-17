@@ -9,10 +9,10 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center">
     <div class="image">
-        <img src="https://ui-avatars.com/api/?name=User" class="img-circle elevation-2" alt="User Image">
+        <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" class="img-circle elevation-2" alt="User Image">
     </div>
     <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        <a href="#" class="d-block">{{Auth::user()->name}}</a>
     </div>
     </div>
 
@@ -31,7 +31,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{route('kendaraan.lihat')}}" class="nav-link">
+            <a href="{{route('admin.kendaraan.lihat')}}" class="nav-link">
                 {{-- active class --}}
                 <i class="nav-icon fas fa-car-alt"></i>
                 <p>
@@ -58,13 +58,14 @@
             </a>
         </li>
         <li class="nav-item">
-        <a href="#" class="nav-link">
-            {{-- active class --}}
-            <i class="nav-icon fas fa-sign-out-alt"></i>
-            <p>
-            Sign Out
-            </p>
-        </a>
+            <a class="nav-link">
+                {{-- active class --}}
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p onclick="event.preventDefault(); document.getElementById('logout-form').submit()" style="cursor: pointer">Signout</p>
+                <form id="logout-form" action="{{route('logout')}}" method="post" style="display: none">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                </form>
+            </a>
         </li>
     </ul>
     </nav>

@@ -22,7 +22,7 @@
 
     <div class="container mt-4">
         <div class=" d-flex flex-row-reverse">
-          <a href="{{route('kendaraan.create')}}">
+          <a href="{{route('admin.kendaraan.create')}}">
             <button class="btn btn-primary btn-sm mb-4">Tambah Data</button>
           </a>
         </div>
@@ -47,10 +47,10 @@
                   <td class="text-center">{{$kendaraan->nopol}}</td>
                   <td class="text-center">
                     <div class="btn-group">
-                      <a href="{{route('kendaraan.edit', $kendaraan->id_kendaraan)}}">
+                      <a href="{{route('admin.kendaraan.edit', $kendaraan->id_kendaraan)}}">
                         <button class="btn btn-primary btn-sm">Edit</button>
                       </a>
-                      <form action="{{route('kendaraan.delete', $kendaraan->id_kendaraan)}}" method="post" onsubmit="return confirm('Anda yakin ingin menghapus data ini?');">
+                      <form action="{{route('admin.kendaraan.delete', $kendaraan->id_kendaraan)}}" method="post" onsubmit="return confirm('Anda yakin ingin menghapus data ini?');">
                         @csrf
                         @method('delete')
                         <button class="btn btn-danger btn-sm">Delete</button>

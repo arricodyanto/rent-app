@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\KendaraanController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\DashboardController as UserDashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,27 +19,47 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+    return redirect(route('login'));
+});
 
-Route::get('kendaraan', [KendaraanController::class, 'index'])->name('kendaraan.lihat');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('kendaraan/create', [KendaraanController::class, 'create'])->name('kendaraan.create');
-Route::post('kendaraan/new', [KendaraanController::class, 'new'])->name('kendaraan.new');
-Route::get('kendaraan/{m_kendaraan:id_kendaraan}', [KendaraanController::class, 'edit'])->name('kendaraan.edit');
-Route::put('kendaraan/{m_kendaraan}', [KendaraanController::class, 'store'])->name('kendaraan.store');
-Route::delete('kendaraan/{m_kendaraan}', [KendaraanController::class, 'delete'])->name('kendaraan.delete');
+Route::middleware(['auth'])->group(function() {
+
+    // Dashboard
+    Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+    // Route::get('dashboard/checkout/invoice/{checkout}', [CheckoutController::class, 'invoice'])->name('user.checkout.invoice');
+
+    // User dashboard
+    Route::prefix("user/dashboard")->namespace('User')->name('user.')->middleware('ensureUserRole:user')->group(function() {
+        Route::get('/', [UserDashboard::class, 'index'])->name('dashboard');
+    });
+
+    // Admin dashboard
+    Route::prefix("admin/dashboard")->namespace('Admin')->name('admin.')->middleware('ensureUserRole:admin')->group(function() {
+        Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');
+        
+        // Admin routes
+        Route::get('kendaraan', [KendaraanController::class, 'index'])->name('kendaraan.lihat');
+        
+        Route::get('kendaraan/create', [KendaraanController::class, 'create'])->name('kendaraan.create');
+        Route::post('kendaraan/new', [KendaraanController::class, 'new'])->name('kendaraan.new');
+        Route::get('kendaraan/{m_kendaraan:id_kendaraan}', [KendaraanController::class, 'edit'])->name('kendaraan.edit');
+        Route::put('kendaraan/{m_kendaraan}', [KendaraanController::class, 'store'])->name('kendaraan.store');
+        Route::delete('kendaraan/{m_kendaraan}', [KendaraanController::class, 'delete'])->name('kendaraan.delete');
+    });
+
+    
+});
 
 
-// Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-// Route::middleware('auth')->group(function () {
-//     Route::view('about', 'about')->name('about');
-
-//     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-
-//     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
-//     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-// });
+require __DIR__.'/auth.php';
