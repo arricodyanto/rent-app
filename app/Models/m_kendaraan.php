@@ -10,5 +10,6 @@ class m_kendaraan extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $primaryKey = 'id_kendaraan';
     protected $fillable = ['merk', 'jenis', 'nama', 'nopol'];
 }

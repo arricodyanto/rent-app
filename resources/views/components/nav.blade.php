@@ -18,47 +18,44 @@
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
             with font-awesome or any other icon font library -->
         <li class="nav-item">
-        <a href="#" class="nav-link">
-            {{-- active class --}}
-            <i class="nav-icon fas fa-home"></i>
-            <p>
-            Dashboard
-            </p>
-        </a>
+            <a href="{{route('dashboard')}}" class="nav-link">
+                {{-- active class --}}
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                Dashboard
+                </p>
+            </a>
         </li>
-        <li class="nav-header">Database Test</li>
         <li class="nav-item">
-        <a href="#" class="nav-link">
-            <i class="nav-icon far fa-envelope"></i>
-            <p>
-            Mailbox
-            <i class="fas fa-angle-left right"></i>
-            </p>
-        </a>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-            <a href="pages/mailbox/mailbox.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Inbox</p>
+            <a href="{{route('kendaraan.lihat')}}" class="nav-link">
+                {{-- active class --}}
+                <i class="nav-icon fas fa-car-alt"></i>
+                <p>
+                Kendaraan
+                </p>
             </a>
-            </li>
-            <li class="nav-item">
-            <a href="pages/mailbox/compose.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Compose</p>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                {{-- active class --}}
+                <i class="nav-icon fas fa-monument"></i>
+                <p>
+                Penitipan
+                </p>
             </a>
-            </li>
-            <li class="nav-item">
-            <a href="pages/mailbox/read-mail.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Read</p>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                {{-- active class --}}
+                <i class="nav-icon fas fa-key"></i>
+                <p>
+                Penyewaan
+                </p>
             </a>
-            </li>
-        </ul>
         </li>
         <li class="nav-item">
         <a href="#" class="nav-link">
