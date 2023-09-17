@@ -20,6 +20,6 @@ class trans_sewa extends Model
      */
     public function trans_titip(): BelongsTo
     {
-        return $this->belongsTo(trans_titip::class, 'foreign_key', 'other_key');
+        return $this->belongsTo(trans_titip::class, 'id_titip');
     }
 }

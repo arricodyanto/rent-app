@@ -20,6 +20,6 @@ class trans_titip extends Model
      */
     public function m_kendaraan(): BelongsTo
     {
-        return $this->belongsTo(m_kendaraan::class, 'foreign_key', 'other_key');
+        return $this->belongsTo(m_kendaraan::class, 'id_kendaraan');
     }
 }

@@ -42,7 +42,7 @@
             </li>
         @else
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('user.penitipan.lihat')}}" class="nav-link">
                     {{-- active class --}}
                     <i class="nav-icon fas fa-monument"></i>
                     <p>

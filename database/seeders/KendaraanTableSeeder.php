@@ -15,6 +15,7 @@ class KendaraanTableSeeder extends Seeder
     {
         $kendaraans = [
             [
+                'id_user' => 1,
                 'merk' => 'Honda',
                 'jenis' => 'MVP',
                 'nama' => 'Mobilio',
@@ -23,6 +24,7 @@ class KendaraanTableSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s', time())
             ],
             [
+                'id_user' => 1,
                 'merk' => 'Mitsubishi',
                 'jenis' => 'SUV',
                 'nama' => 'Expander',
@@ -31,6 +33,7 @@ class KendaraanTableSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s', time())
             ],
             [
+                'id_user' => 1,
                 'merk' => 'Mitsubishi',
                 'jenis' => 'SUV',
                 'nama' => 'Pajero Sport',

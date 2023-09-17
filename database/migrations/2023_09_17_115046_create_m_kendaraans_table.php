@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('m_kendaraans', function (Blueprint $table) {
             $table->bigIncrements('id_kendaraan');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id_user')->on('Users')->onDelete('cascade');
             $table->string('merk', 20);
             $table->string('jenis', 24);
             $table->string('nama', 40);
