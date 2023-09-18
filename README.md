@@ -67,10 +67,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## Migrations & seeds
 
-Type the following command in your terminal. Make sure you have installed composer, php, and mysql
-`sh
+1. Type the following command in your terminal. Make sure you have installed composer, php, and mysql
+    ```sh
     php artisan migrate —seed
-    `
+    ```
 
 ## Start the Developent Server
 
