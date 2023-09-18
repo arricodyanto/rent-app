@@ -51,7 +51,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('user.penyewaan.lihat')}}" class="nav-link">
                     {{-- active class --}}
                     <i class="nav-icon fas fa-key"></i>
                     <p>

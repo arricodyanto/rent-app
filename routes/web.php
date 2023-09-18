@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PenitipanController;
+use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
 
 /*
@@ -40,6 +41,9 @@ Route::middleware(['auth'])->group(function() {
         Route::get('penitipan/titipkan', [PenitipanController::class, 'create'])->name('penitipan.create');
         Route::post('penitipan/new', [PenitipanController::class, 'new'])->name('penitipan.new');
         Route::patch('penitipan/{id_titip}', [PenitipanController::class, 'tarik'])->name('penitipan.tarik');
+
+        Route::get('penyewaan', [PenyewaanController::class, 'index'])->name('penyewaan.lihat');
+        Route::patch('penyewaan/{id_kendaraan}', [PenyewaanController::class, 'sewa'])->name('penyewaan.sewa');
     });
 
     // Admin dashboard
