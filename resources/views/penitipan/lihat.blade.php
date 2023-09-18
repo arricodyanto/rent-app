@@ -29,7 +29,7 @@
         <table class="table table-striped table-hover">
             <thead>
               <tr>
-                <th style="width: 15px">No.</th>
+                <th style="width: 15px">ID</th>
                 <th class="text-center">Merk</th>
                 <th class="text-center">Jenis Kendaraan</th>
                 <th class="text-center">Nama Kendaraan</th>
@@ -37,35 +37,32 @@
                 <th class="text-center">Tanggal Dititipkan</th>
                 <th class="text-center">Harga Sewa</th>
                 <th class="text-center">Tanggal Ditarik</th>
-                {{-- <th class="text-center">Aksi</th> --}}
+                <th class="text-center">Aksi</th>
               </tr>
             </thead>
             <tbody>
               @forelse ($titips as $titip)
                 <tr>
-                  <td>{{$titip->id_kendaraan}}</td>
+                  <td>{{$titip->id_titip}}</td>
                   <td class="text-center">{{$titip->m_kendaraan->merk}}</td>
                   <td class="text-center">{{$titip->m_kendaraan->jenis}}</td>
                   <td class="text-center">{{$titip->m_kendaraan->nama}}</td>
                   <td class="text-center">{{$titip->m_kendaraan->nopol}}</td>
                   <td class="text-center">{{$titip->tgl_titip}}</td>
                   <td class="text-center">Rp. {{$titip->harga_sewa}}</td>
-                  <td class="text-center">{{$titip->tgl_berakhir}}</td>
+                  <td class="text-center">{{ date('d M Y', strtotime($titip->tgl_berakhir)) }}</td>
                   <td class="text-center">
                     <div class="btn-group">
-                      <a href="{{route('admin.kendaraan.edit', $titip->id_kendaraan)}}">
-                        <button class="btn btn-primary btn-sm">Edit</button>
-                      </a>
-                      <form action="{{route('admin.kendaraan.delete', $titip->id_kendaraan)}}" method="post" onsubmit="return confirm('Anda yakin ingin menghapus data ini?');">
+                      <form action="{{route('user.penitipan.tarik', $titip->id_titip)}}" method="post" onsubmit="return confirm('Anda yakin ingin menarik kendaraan ini?');">
                         @csrf
-                        @method('delete')
-                        <button class="btn btn-danger btn-sm">Delete</button>
-                      </form>
+                        @method('patch')
+                        <input type="hidden" name="id_kendaraan" value="{{$titip->m_kendaraan->id_titip}}">
+                        <button class="btn btn-warning btn-sm">Tarik Sekarang</button>                      </form>
                     </div>
                   </td>
                 </tr>
               @empty
-                <p>Tidak ada data kendaraan.</p>
+                <tr>Tidak ada data kendaraan.</tr>
               @endforelse
             </tbody>
           </table>

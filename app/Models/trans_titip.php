@@ -11,6 +11,9 @@ class trans_titip extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'trans_titips';
+    protected $primaryKey = 'id_titip';
+
     protected $fillable = ['tgl_titip', 'harga_sewa', 'tgl_berakhir'];
 
     /**

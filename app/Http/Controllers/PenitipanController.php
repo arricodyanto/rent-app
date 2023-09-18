@@ -27,11 +27,13 @@ class PenitipanController extends Controller
     }
 
     public function new(Request $request) {
+        $userId = Auth::id();
         DB::beginTransaction();
 
         try {
             // Tambah data kendaraan
             $kendaraan = new m_kendaraan();
+            $kendaraan->id_user = $userId;
             $kendaraan->merk = $request->input('merk');
             $kendaraan->jenis = $request->input('jenis');
             $kendaraan->nama = $request->input('nama');
@@ -54,5 +56,19 @@ class PenitipanController extends Controller
             return back()->with('error', 'Terjadi kesalahan: ' . $th->getMessage());
         }
 
+    }
+
+    public function tarik(Request $request, $id_titip)
+    {
+        $transTitip = trans_titip::find($id_titip);
+        
+        if ($transTitip) {
+            $transTitip->tgl_berakhir = now();
+            $transTitip->save();
+
+            return redirect()->route('user.penitipan.lihat'); // Ganti 'route_name' dengan nama rute yang sesuai
+        } else {
+            return back()->with('error', 'Data tidak ditemukan');
+        }
     }
 }

@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function() {
         Route::get('penitipan', [PenitipanController::class, 'index'])->name('penitipan.lihat');
         Route::get('penitipan/titipkan', [PenitipanController::class, 'create'])->name('penitipan.create');
         Route::post('penitipan/new', [PenitipanController::class, 'new'])->name('penitipan.new');
+        Route::patch('penitipan/{id_titip}', [PenitipanController::class, 'tarik'])->name('penitipan.tarik');
     });
 
     // Admin dashboard
